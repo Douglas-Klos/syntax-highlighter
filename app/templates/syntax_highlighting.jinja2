@@ -1,33 +1,35 @@
 {% extends 'base.jinja2' %}
 
 {% block head %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pygments.css') }}">
-
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/pygments.css') }}">
 {% endblock head %}
 
 {% block content %}
-
-
-<form method="POST">
-
-    <div class="site-main">
-
-        {# <h2>Paste in your code</h2> #}
-
-        <p>
-        Python
-        <input type="submit" name="submit_button">
-        </p>
-
-        
-        <p><textarea type = "textarea" name = "user_input" class="code-input"></textarea></p>
-        
-      
-    </div>
-
-</form>
-
-
-{{ user_input | safe }}
-
+<div class="page-content">
+    <form method="POST">
+        <div class="site-main">
+            <p>
+                <input type="submit" value="Highlight" name="submit_button"><br>
+                <select name="colour" method="GET" action="/">
+                    {% for lexer in all_lexers %}
+                    <option value="{{lexer}}">{{lexer}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <textarea type="textarea" name="user_input" class="code-input" style="lineheight: 1"></textarea>
+            </p>
+        </div>
+    </form>
+</div>
+<div class="syntax-highlight">
+    {{ user_input | safe }}
+</div>
 {% endblock content %}
+
+{% block footer %}
+<footer>
+    <br>
+    Page created by Douglas Klos with Pygments library.
+</footer>
+{% endblock footer %}
