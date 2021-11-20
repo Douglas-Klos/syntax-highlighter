@@ -2,7 +2,7 @@ import os
 from peewee import Model, CharField, DateTimeField, ForeignKeyField, TextField
 from playhouse.db_url import connect
 
-db = connect(os.environ.get("DATABASE_URL", "sqlite:///saravjishut.db"))
+db = connect(os.environ.get("DATABASE_URL", "sqlite:///app/saravjishut.db"))
 
 
 class User(Model):
