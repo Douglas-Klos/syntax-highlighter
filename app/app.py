@@ -80,6 +80,11 @@ def login():
         return render_template("login.jinja2")
 
 
+@app.route("/blog", methods=["GET", "POST"])
+def blog():
+    return render_template("blog.jinja2", posts=Post.select())
+
+
 @app.route("/writings", methods=["GET"])
 def writings():
     return render_template("writings.jinja2")

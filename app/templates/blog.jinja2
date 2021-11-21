@@ -1,0 +1,16 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}<h2>Saravji's Blog</h2>{% endblock subtitle %}
+
+{% block content %}
+<ul>
+    {% for post in posts %}
+    <li>
+        <b>By: {{ post.name_id }}
+        <br>{{ post.date }} - {{ post.subject }}</b>        
+        <br>{{ post.content }}
+        <br><br>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

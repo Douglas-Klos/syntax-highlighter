@@ -2,7 +2,7 @@ import os
 from peewee import Model, CharField, DateTimeField, ForeignKeyField, TextField
 from playhouse.db_url import connect
 
-db = connect(os.environ.get("DATABASE_URL", "sqlite:///app/saravjishut.db"))
+db = connect(os.environ.get("DATABASE_URL", "sqlite:///saravjishut.db"))
 
 
 class User(Model):
@@ -14,7 +14,7 @@ class User(Model):
 
 
 class Post(Model):
-    author = ForeignKeyField(model=User, null=True)
+    name = ForeignKeyField(model=User, null=True)
     date = DateTimeField(null=True)
     subject = CharField(max_length=255)
     content = TextField()
